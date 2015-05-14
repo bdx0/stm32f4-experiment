@@ -35,9 +35,36 @@ lib: libs.sh
 	./libs.sh
 	@echo $@ done !!
 	
-all: tool lib
-	@echo  $@ done !!
-	
 shell:
-	xterm
+	cd lib/stm32_discovery_arm_gcc/blinky && xterm
 	@echo $@ done !!
+	
+.PHONY: git-create
+git-create:
+	git init
+	git config --global user.name "Duong Bao Duy"
+	git config --global user.email "baoduy.duong0206@gmail.com"
+	case "$(shell git remote)" in \
+		"origin" ) git remote remove origin; \
+	esac 
+	git remote add origin https://github.com/duongbaoduy/stm32f4-experiment.git
+	@echo Done $@ : $^ !!
+
+.PHONY: build
+build:
+	@echo Done $@ !!
+
+.PHONY: clean
+clean:
+	@echo Done $@ !!
+
+.PHONY: all
+all:  tool lib shell
+	@echo Your script path: $(LOCAL_PATH)
+	@echo Select target for make
+	@echo Done $@ !!!
+
+.PHONY: git-pub
+git-pub:
+	git push -u origin --all
+	@echo Done $@ !!
