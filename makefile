@@ -59,7 +59,7 @@ clean:
 	@echo Done $@ !!
 
 .PHONY: all
-all:  tool lib shell
+all:  tool lib #shell
 	@echo Your script path: $(LOCAL_PATH)
 	@echo Select target for make
 	@echo Done $@ !!!
