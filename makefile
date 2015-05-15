@@ -21,9 +21,8 @@ tool: tools.sh
 
 export PATH:=$(PATH):$(shell pwd)/tool/arm-compiler/bin:$(shell pwd)/tool/stlink
 .PHONY: check-tool
-check-tool:
-	echo $(PATH)
-	arm-none-eabi-gcc --version
+burn:
+	cd lib/stm32_discovery_arm_gcc/blinky && make all burn
 	@echo $@ done !!
 
 .PHONY: libs.sh
