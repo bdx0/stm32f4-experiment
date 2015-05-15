@@ -20,10 +20,16 @@ tool: tools.sh
 	@echo $@ done !!
 
 export PATH:=$(PATH):$(shell pwd)/tool/arm-compiler/bin:$(shell pwd)/tool/stlink
-.PHONY: check-tool
-check-tool:
+.PHONY: stepper-burn
+stepper-burn:
 	echo $(PATH)
-	arm-none-eabi-gcc --version
+	cd src/stepper && make burn
+	@echo $@ done !!
+
+.PHONY: blinky-burn
+blinky-burn:
+	echo $(PATH)
+	cd lib/stm32_discovery_arm_gcc/blinky && make burn
 	@echo $@ done !!
 
 .PHONY: libs.sh

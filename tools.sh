@@ -8,11 +8,11 @@ pushd tool
 
 if [ ! -d stlink ]; then
 git clone https://github.com/texane/stlink.git
-fi
 pushd stlink
 ./autogen.sh
 ./configure
 make
 popd
+fi
 
 popd
